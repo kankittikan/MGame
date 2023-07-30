@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     private Piece piece;
-    private Die die1;
-    private Die die2;
+    private List<Die> dies;
     private Board board;
     private String name;
 
@@ -9,12 +11,21 @@ public class Player {
         this.piece = piece;
         this.board = board;
         this.name = name;
-        die1 = new Die();
-        die2 = new Die();
+        dies = new ArrayList<>();
+        dies.add(new Die());
+        dies.add(new Die());
     }
 
     public void takeTurn() {
+        int fv = 0;
+        for(Die die : dies) {
+            die.roll();
+            fv += die.getFaceValue();
+        }
 
+        Square oldLoc = piece.getLocation();
+        Square newLoc = board.getSquare(oldLoc, fv);
+        piece.setLocation(newLoc);
     }
 
 }
