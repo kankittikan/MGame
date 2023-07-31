@@ -11,12 +11,16 @@ public class Main {
 
         Board board = new Board(squares);
 
-        List<Player> players = new ArrayList<>();
-        players.add(new Player(new Piece(squares.get(0), Color.BLUE), board, "Tom"));
-        players.add(new Player(new Piece(squares.get(0), Color.RED), board, "Jerry"));
-        players.add(new Player(new Piece(squares.get(0), Color.PINK), board, "Doo"));
+        List<Die> dieList = new ArrayList<>();
+        dieList.add(new Die());
+        dieList.add(new Die());
 
-        MGame mGame = new MGame(players, board, 10);
+        List<Player> players = new ArrayList<>();
+        players.add(new Player(new Piece(squares.get(0), Color.BLUE), board, "Tom", dieList));
+        players.add(new Player(new Piece(squares.get(0), Color.RED), board, "Jerry", dieList));
+        players.add(new Player(new Piece(squares.get(0), Color.PINK), board, "Doo", dieList));
+
+        MGame mGame = new MGame(players, board, 10, dieList);
         mGame.playGame();
     }
 }

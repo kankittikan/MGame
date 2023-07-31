@@ -7,13 +7,11 @@ public class Player {
     private Board board;
     private String name;
 
-    public Player(Piece piece, Board board, String name) {
+    public Player(Piece piece, Board board, String name, List<Die> dies) {
         this.piece = piece;
         this.board = board;
         this.name = name;
-        dies = new ArrayList<>();
-        dies.add(new Die());
-        dies.add(new Die());
+        this.dies = dies;
     }
 
     public void takeTurn() {
